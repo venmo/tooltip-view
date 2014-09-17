@@ -1,0 +1,11 @@
+<resources>
+
+    <declare-styleable name="TooltipView">
+        <attr name="anchoredView" format="reference" />
+        <attr name="cornerRadius" format="dimension" />
+        <attr name="tooltipColor" format="color" />
+        <attr name="arrowHeight" format="dimension" />
+        <attr name="arrowWidth" format="dimension" />
+    </declare-styleable>
+
+</resources>
