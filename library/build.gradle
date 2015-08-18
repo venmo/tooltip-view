@@ -1,14 +1,12 @@
 import com.android.builder.core.BuilderConstants
 
 apply plugin: 'com.android.library'
-apply plugin: 'robolectric'
 
 android {
     compileSdkVersion 20
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "com.venmo.view"
         minSdkVersion 14
         targetSdkVersion 20
         versionCode 1
