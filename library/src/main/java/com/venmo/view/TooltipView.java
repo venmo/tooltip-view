@@ -56,7 +56,8 @@ public class TooltipView extends TextView {
                     R.dimen.tooltip_default_arrow_height);
             arrowWidth = getDimension(a, R.styleable.TooltipView_arrowWidth,
                     R.dimen.tooltip_default_arrow_width);
-            int location = a.getInteger(R.styleable.TooltipView_arrowLocation, res.getInteger(R.integer.tooltip_default_arrow_location));
+            int location = a.getInteger(R.styleable.TooltipView_arrowLocation,
+                    res.getInteger(R.integer.tooltip_default_arrow_location));
             arrowLocation = location == 0 ? new TopArrowLocation() : new BottomArrowLocation();
         } finally {
             a.recycle();
@@ -162,7 +163,7 @@ public class TooltipView extends TextView {
     }
 
     private int getDimension(TypedArray a, @StyleableRes int styleableId,
-                             @DimenRes int defaultDimension) {
+            @DimenRes int defaultDimension) {
         int result = a.getDimensionPixelSize(styleableId, NOT_PRESENT);
         if (result == NOT_PRESENT) {
             result = getResources().getDimensionPixelSize(defaultDimension);
