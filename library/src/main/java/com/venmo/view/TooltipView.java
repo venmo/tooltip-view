@@ -25,8 +25,8 @@ public class TooltipView extends TextView {
     private @IdRes int anchoredViewId;
     private @ColorRes int tooltipColor;
     private ArrowLocation arrowLocation;
-    protected Paint paint;
-    protected Path tooltipPath;
+    private Paint paint;
+    private Path tooltipPath;
 
     public TooltipView(Context context) {
         super(context);
@@ -56,16 +56,8 @@ public class TooltipView extends TextView {
                     R.dimen.tooltip_default_arrow_height);
             arrowWidth = getDimension(a, R.styleable.TooltipView_arrowWidth,
                     R.dimen.tooltip_default_arrow_width);
-            int location = a.getInteger(R.styleable.TooltipView_arrowLocation, R.integer.tooltip_default_arrow_location);
-            switch (location) {
-                case 0:
-                    this.arrowLocation = new TopArrowLocation();
-                    break;
-                case 1:
-                default:
-                    this.arrowLocation = new BottomArrowLocation();
-            }
-
+            int location = a.getInteger(R.styleable.TooltipView_arrowLocation, res.getInteger(R.integer.tooltip_default_arrow_location));
+            arrowLocation = location == 0 ? new TopArrowLocation() : new BottomArrowLocation();
         } finally {
             a.recycle();
         }
@@ -91,6 +83,22 @@ public class TooltipView extends TextView {
         }
         canvas.drawPath(tooltipPath, paint);
         super.onDraw(canvas);
+    }
+
+    public Paint getTooltipPaint() {
+        return paint;
+    }
+
+    public void setPaint(Paint paint) {
+        this.paint = paint;
+    }
+
+    public Path getTooltipPath() {
+        return tooltipPath;
+    }
+
+    public void setTooltipPath(Path tooltipPath) {
+        this.tooltipPath = tooltipPath;
     }
 
     public int getArrowHeight() {
