@@ -6,6 +6,10 @@
         <attr name="tooltipColor" format="color" />
         <attr name="arrowHeight" format="dimension" />
         <attr name="arrowWidth" format="dimension" />
+        <attr name="arrowLocation" format="integer">
+            <enum name="top" value="0" />
+            <enum name="bottom" value="1" />
+        </attr>
     </declare-styleable>
 
 </resources>
