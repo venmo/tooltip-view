@@ -13,7 +13,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-annotations:22.0.0'
+    compile 'com.android.support:support-annotations:22.2.1'
     testCompile 'junit:junit:4.11'
     testCompile 'org.robolectric:robolectric:3.0'
     testCompile 'com.squareup.assertj:assertj-android:1.0.0'
