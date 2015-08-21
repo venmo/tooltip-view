@@ -1,9 +1,8 @@
 package com.venmo.view;
 
-
 import android.graphics.Canvas;
 
-public interface ArrowLocation {
+interface ArrowLocation {
 
-    void draw(TooltipView view, Canvas canvas);
+    void configureDraw(TooltipView view, Canvas canvas);
 }

@@ -1,6 +1,5 @@
 package com.venmo.view;
 
-
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -12,7 +11,7 @@ import static android.graphics.Path.Direction;
 class BottomArrowLocation implements ArrowLocation {
 
     @Override
-    public void draw(TooltipView view, Canvas canvas) {
+    public void configureDraw(TooltipView view, Canvas canvas) {
         view.setTooltipPath(new Path());
         RectF rectF = new RectF(canvas.getClipBounds());
         rectF.bottom -= view.getArrowHeight();

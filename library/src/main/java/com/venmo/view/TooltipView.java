@@ -80,25 +80,25 @@ public class TooltipView extends TextView {
     @Override
     protected void onDraw(@NonNull Canvas canvas) {
         if (tooltipPath == null || paint == null) {
-            arrowLocation.draw(this, canvas);
+            arrowLocation.configureDraw(this, canvas);
         }
         canvas.drawPath(tooltipPath, paint);
         super.onDraw(canvas);
     }
 
-    public Paint getTooltipPaint() {
+    Paint getTooltipPaint() {
         return paint;
     }
 
-    public void setPaint(Paint paint) {
+    void setPaint(Paint paint) {
         this.paint = paint;
     }
 
-    public Path getTooltipPath() {
+    Path getTooltipPath() {
         return tooltipPath;
     }
 
-    public void setTooltipPath(Path tooltipPath) {
+    void setTooltipPath(Path tooltipPath) {
         this.tooltipPath = tooltipPath;
     }
 
