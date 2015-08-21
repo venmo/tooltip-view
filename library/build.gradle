@@ -1,26 +1,22 @@
 import com.android.builder.core.BuilderConstants
 
 apply plugin: 'com.android.library'
-apply plugin: 'robolectric'
 
 android {
-    compileSdkVersion 20
-    buildToolsVersion "20.0.0"
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "com.venmo.view"
         minSdkVersion 14
-        targetSdkVersion 20
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 22
     }
 }
 
 dependencies {
-    compile 'com.android.support:support-annotations:20.0.0'
-    androidTestCompile 'junit:junit:4.11'
-    androidTestCompile 'org.robolectric:robolectric:2.3'
-    androidTestCompile 'com.squareup.assertj:assertj-android:1.0.0'
+    compile 'com.android.support:support-annotations:22.2.1'
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.robolectric:robolectric:3.0'
+    testCompile 'com.squareup.assertj:assertj-android:1.0.0'
 }
 
 android.libraryVariants.all { variant ->

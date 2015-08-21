@@ -7,16 +7,17 @@ import android.support.annotation.IdRes;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
-import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowView;
 
-import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
 import static com.venmo.view.Assertions.assertThat;
-import static org.robolectric.Robolectric.shadowOf;
+import static org.robolectric.Shadows.shadowOf;
 
-@RunWith(RobolectricTestRunner.class)
-@Config(emulateSdk = JELLY_BEAN_MR2)
+@RunWith(RobolectricGradleTestRunner.class)
+@Config(constants = BuildConfig.class,
+        sdk = 21,
+        manifest = "build/intermediates/manifests/androidTest/debug/AndroidManifest.xml")
 public class TooltipViewTest {
 
     private static final @IdRes int sampleId = 234;
