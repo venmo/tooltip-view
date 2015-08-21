@@ -7,8 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Path.Direction;
-import android.graphics.RectF;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
 import android.support.annotation.IdRes;
@@ -26,6 +24,7 @@ public class TooltipView extends TextView {
     private int cornerRadius;
     private @IdRes int anchoredViewId;
     private @ColorRes int tooltipColor;
+    private ArrowLocation arrowLocation;
     private Paint paint;
     private Path tooltipPath;
 
@@ -57,6 +56,9 @@ public class TooltipView extends TextView {
                     R.dimen.tooltip_default_arrow_height);
             arrowWidth = getDimension(a, R.styleable.TooltipView_arrowWidth,
                     R.dimen.tooltip_default_arrow_width);
+            int location = a.getInteger(R.styleable.TooltipView_arrowLocation,
+                    res.getInteger(R.integer.tooltip_default_arrow_location));
+            arrowLocation = location == 0 ? new TopArrowLocation() : new BottomArrowLocation();
         } finally {
             a.recycle();
         }
@@ -78,31 +80,26 @@ public class TooltipView extends TextView {
     @Override
     protected void onDraw(@NonNull Canvas canvas) {
         if (tooltipPath == null || paint == null) {
-            initTooltip(canvas);
+            arrowLocation.configureDraw(this, canvas);
         }
         canvas.drawPath(tooltipPath, paint);
         super.onDraw(canvas);
     }
 
-    private void initTooltip(Canvas canvas) {
-        tooltipPath = new Path();
-        RectF rectF = new RectF(canvas.getClipBounds());
-        rectF.bottom -= arrowHeight;
-        tooltipPath.addRoundRect(rectF, cornerRadius, cornerRadius, Direction.CW);
+    Paint getTooltipPaint() {
+        return paint;
+    }
 
-        float middle = rectF.width() / 2;
-        if (anchoredViewId != View.NO_ID) {
-            View anchoredView = ((View) getParent()).findViewById(anchoredViewId);
-            middle += anchoredView.getX() + anchoredView.getWidth() / 2 - getX() - getWidth() / 2;
-        }
-        tooltipPath.moveTo(middle, getHeight());
-        int arrowDx = arrowWidth / 2;
-        tooltipPath.lineTo(middle - arrowDx, rectF.bottom);
-        tooltipPath.lineTo(middle + arrowDx, rectF.bottom);
-        tooltipPath.close();
+    void setPaint(Paint paint) {
+        this.paint = paint;
+    }
 
-        paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(tooltipColor);
+    Path getTooltipPath() {
+        return tooltipPath;
+    }
+
+    void setTooltipPath(Path tooltipPath) {
+        this.tooltipPath = tooltipPath;
     }
 
     public int getArrowHeight() {
