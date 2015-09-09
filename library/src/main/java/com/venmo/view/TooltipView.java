@@ -25,6 +25,9 @@ public class TooltipView extends TextView {
     private @IdRes int anchoredViewId;
     private @ColorRes int tooltipColor;
     private ArrowLocation arrowLocation;
+    private ArrowAlignment arrowAlignment;
+    private int offset;
+    private int arrowPositioning;
     private Paint paint;
     private Path tooltipPath;
 
@@ -56,9 +59,15 @@ public class TooltipView extends TextView {
                     R.dimen.tooltip_default_arrow_height);
             arrowWidth = getDimension(a, R.styleable.TooltipView_arrowWidth,
                     R.dimen.tooltip_default_arrow_width);
-            int location = a.getInteger(R.styleable.TooltipView_arrowLocation,
+            arrowPositioning = a.getInteger(R.styleable.TooltipView_arrowLocation,
                     res.getInteger(R.integer.tooltip_default_arrow_location));
-            arrowLocation = location == 0 ? new TopArrowLocation() : new BottomArrowLocation();
+            arrowLocation = arrowPositioning == 0 ? new TopArrowLocation()
+                    : new BottomArrowLocation();
+            arrowAlignment = ArrowAlignment.getAlignment(
+                    a.getInteger(R.styleable.TooltipView_arrowAlignment, res.getInteger(
+                            R.integer.tooltip_default_arrow_alignment)));
+            offset = getDimension(a, R.styleable.TooltipView_arrowOffset,
+                    R.dimen.tooltip_default_offset);
         } finally {
             a.recycle();
         }
@@ -159,6 +168,28 @@ public class TooltipView extends TextView {
 
     public void setTooltipColor(int tooltipColor) {
         this.tooltipColor = tooltipColor;
+        invalidate();
+    }
+
+    public void setArrowPositioning(int arrowPositioning) {
+        this.arrowPositioning = arrowPositioning;
+        invalidate();
+    }
+
+    public int getArrowPositioning() {
+        return arrowPositioning;
+    }
+
+    public ArrowAlignment getArrowAlignment() {
+        return arrowAlignment;
+    }
+
+    public int getOffset() {
+        return offset;
+    }
+
+    public void setOffset(int offset) {
+        this.offset = offset;
         invalidate();
     }
 

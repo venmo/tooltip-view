@@ -15,13 +15,35 @@ class BottomArrowLocation implements ArrowLocation {
         view.setTooltipPath(new Path());
         RectF rectF = new RectF(canvas.getClipBounds());
         rectF.bottom -= view.getArrowHeight();
-        view.getTooltipPath().addRoundRect(rectF, view.getCornerRadius(), view.getCornerRadius(), Direction.CW);
+        view.getTooltipPath()
+                .addRoundRect(rectF, view.getCornerRadius(), view.getCornerRadius(), Direction.CW);
 
-        float middle = rectF.width() / 2;
-        if (view.getAnchoredViewId() != View.NO_ID) {
-            View anchoredView = ((View) view.getParent()).findViewById(view.getAnchoredViewId());
-            middle += anchoredView.getX() + anchoredView.getWidth() / 2 - view.getX() - view.getWidth() / 2;
+        int offset = view.getOffset();
+        float middle = 0f;
+
+        switch (view.getArrowAlignment()) {
+            case LEFT:
+                middle = offset == 0 ? rectF.width() / 4 : offset;
+                break;
+            case CENTER:
+                middle = rectF.width() / 2;
+                middle += offset;
+                break;
+            case RIGHT:
+                middle = rectF.width();
+                middle -= (offset == 0 ? rectF.width() / 4 : offset);
+                break;
+            case CUSTOM:
+                middle = rectF.width() / 2;
+                if (view.getAnchoredViewId() != View.NO_ID) {
+                    View anchoredView = ((View) view.getParent())
+                            .findViewById(view.getAnchoredViewId());
+                    middle += anchoredView.getX() + anchoredView.getWidth() / 2 - view.getX()
+                            - view.getWidth() / 2;
+                }
+                break;
         }
+
         view.getTooltipPath().moveTo(middle, view.getHeight());
         int arrowDx = view.getArrowWidth() / 2;
         view.getTooltipPath().lineTo(middle - arrowDx, rectF.bottom);

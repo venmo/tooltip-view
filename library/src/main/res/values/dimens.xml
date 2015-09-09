@@ -2,5 +2,7 @@
     <dimen name="tooltip_default_arrow_height">8dp</dimen>
     <dimen name="tooltip_default_arrow_width">16dp</dimen>
     <dimen name="tooltip_default_corner_radius">4dp</dimen>
+    <dimen name="tooltip_default_offset">0dp</dimen>
     <integer name="tooltip_default_arrow_location">1</integer>
+    <integer name="tooltip_default_arrow_alignment">3</integer>
 </resources>
