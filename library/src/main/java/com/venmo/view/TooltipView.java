@@ -26,7 +26,7 @@ public class TooltipView extends TextView {
     private @ColorRes int tooltipColor;
     private ArrowLocation arrowLocation;
     private ArrowAlignment arrowAlignment;
-    private int offset;
+    private int alignmentOffset;
     private int arrowPositioning;
     private Paint paint;
     private Path tooltipPath;
@@ -66,7 +66,7 @@ public class TooltipView extends TextView {
             arrowAlignment = ArrowAlignment.getAlignment(
                     a.getInteger(R.styleable.TooltipView_arrowAlignment, res.getInteger(
                             R.integer.tooltip_default_arrow_alignment)));
-            offset = getDimension(a, R.styleable.TooltipView_arrowOffset,
+            alignmentOffset = getDimension(a, R.styleable.TooltipView_arrowAlignmentOffset,
                     R.dimen.tooltip_default_offset);
         } finally {
             a.recycle();
@@ -184,12 +184,22 @@ public class TooltipView extends TextView {
         return arrowAlignment;
     }
 
-    public int getOffset() {
-        return offset;
+    public void setArrowAlignment(ArrowAlignment arrowAlignment) {
+        this.arrowAlignment = arrowAlignment;
+        invalidate();
     }
 
-    public void setOffset(int offset) {
-        this.offset = offset;
+    public int getAlignmentOffset() {
+        return alignmentOffset;
+    }
+
+    public void setAlignmentOffset(int offset) {
+        this.alignmentOffset = offset;
+        invalidate();
+    }
+
+    public void setAlignmentOffsetResource(@DimenRes int resId) {
+        this.alignmentOffset = getResources().getDimensionPixelSize(resId);
         invalidate();
     }
 

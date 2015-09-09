@@ -19,7 +19,7 @@ class TopArrowLocation implements ArrowLocation {
         view.getTooltipPath().addRoundRect(rectF, view.getCornerRadius(), view.getCornerRadius(),
                 Direction.CW);
 
-        int offset = view.getOffset();
+        int offset = view.getAlignmentOffset();
         float middle = 0f;
 
         switch (view.getArrowAlignment()) {
