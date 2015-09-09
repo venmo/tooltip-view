@@ -22,6 +22,8 @@ app:anchoredView="@id/anchored_view"
 app:arrowWidth="120dp"
 app:arrowHeight="120dp"
 app:cornerRadius="16dp"
+app:arrowOffset="30dp"
+app:arrowAlignment="right"
 ```
 
 Screenshot:
@@ -33,5 +35,4 @@ compile 'com.venmo.view.tooltip:tooltip:0.1@aar'
 ```
 
 ## TODO
- - tooltips with the arrow at the top of the bubble
  - tooltips on the sides of the bubble
