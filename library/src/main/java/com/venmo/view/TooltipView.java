@@ -176,10 +176,6 @@ public class TooltipView extends TextView {
         invalidate();
     }
 
-    public int getArrowPositioning() {
-        return arrowPositioning;
-    }
-
     public ArrowAlignment getArrowAlignment() {
         return arrowAlignment;
     }
