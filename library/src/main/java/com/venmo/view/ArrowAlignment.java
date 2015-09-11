@@ -1,8 +1,7 @@
 package com.venmo.view;
 
 public enum ArrowAlignment {
-    START(0), CENTER(1), END(2), CUSTOM(3);
-
+    START(0), CENTER(1), END(2), ANCHORED_VIEW(3);
 
     private final int value;
 
@@ -10,14 +9,13 @@ public enum ArrowAlignment {
         this.value = value;
     }
 
-
     public static ArrowAlignment getAlignment(int value) {
         for (ArrowAlignment alignment : values()) {
             if (value == alignment.getValue()) {
                 return alignment;
             }
         }
-        throw new IllegalArgumentException("wrong ordinal");
+        throw new IllegalArgumentException("No matching ArrowAlignment with value: " +value);
     }
 
     public int getValue() {
