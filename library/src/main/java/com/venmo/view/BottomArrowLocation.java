@@ -22,14 +22,13 @@ class BottomArrowLocation implements ArrowLocation {
         float middle = 0f;
 
         switch (view.getArrowAlignment()) {
-            case LEFT:
+            case START:
                 middle = offset == 0 ? rectF.width() / 4 : offset;
                 break;
             case CENTER:
                 middle = rectF.width() / 2;
-                middle += offset;
                 break;
-            case RIGHT:
+            case END:
                 middle = rectF.width();
                 middle -= (offset == 0 ? rectF.width() / 4 : offset);
                 break;
