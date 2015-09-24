@@ -3,10 +3,9 @@ package com.venmo.view;
 import android.graphics.RectF;
 import android.view.View;
 
-public class ArrowAlignmentHelper {
+public final class ArrowAlignmentHelper {
 
     public static float calculateArrowMidPoint(TooltipView view, RectF rectF) {
-
         int offset = view.getAlignmentOffset();
         float middle = 0f;
 
