@@ -16,13 +16,10 @@ class TopArrowLocation implements ArrowLocation {
         RectF rectF = new RectF(canvas.getClipBounds());
         rectF.top += view.getArrowHeight();
 
-        view.getTooltipPath().addRoundRect(rectF, view.getCornerRadius(), view.getCornerRadius(), Direction.CW);
+        view.getTooltipPath().addRoundRect(rectF, view.getCornerRadius(), view.getCornerRadius(),
+                Direction.CW);
 
-        float middle = rectF.width() / 2;
-        if (view.getAnchoredViewId() != View.NO_ID) {
-            View anchoredView = ((View) view.getParent()).findViewById(view.getAnchoredViewId());
-            middle += anchoredView.getX() + anchoredView.getWidth() / 2 - view.getX() - view.getWidth() / 2;
-        }
+        float middle = ArrowAlignmentHelper.calculateArrowMidPoint(view, rectF);
 
         view.getTooltipPath().moveTo(middle, 0f);
         int arrowDx = view.getArrowWidth() / 2;

@@ -6,9 +6,17 @@
         <attr name="tooltipColor" format="color" />
         <attr name="arrowHeight" format="dimension" />
         <attr name="arrowWidth" format="dimension" />
+        <attr name="arrowAlignmentOffset" format="dimension" />
         <attr name="arrowLocation" format="integer">
             <enum name="top" value="0" />
             <enum name="bottom" value="1" />
+        </attr>
+
+        <attr name="arrowAlignment" format="enum">
+            <enum name="start" value="0" />
+            <enum name="center" value="1" />
+            <enum name="end" value="2" />
+            <enum name="anchored_view" value="3" />
         </attr>
     </declare-styleable>
 
