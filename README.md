@@ -31,7 +31,7 @@ Screenshot:
 
 # Download
 ```groovy
-compile 'com.venmo.view.tooltip:tooltip:0.1@aar'
+compile 'com.venmo.view.tooltip:tooltip:0.1.2@aar'
 ```
 
 ## TODO
