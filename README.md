@@ -22,8 +22,8 @@ app:anchoredView="@id/anchored_view"
 app:arrowWidth="120dp"
 app:arrowHeight="120dp"
 app:cornerRadius="16dp"
-app:arrowOffset="30dp"
-app:arrowAlignment="right"
+app:arrowAlignmentOffset="32dp"
+app:arrowAlignment="end"
 app:arrowLocation="top"
 ```
 
