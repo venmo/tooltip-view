@@ -24,6 +24,7 @@ app:arrowHeight="120dp"
 app:cornerRadius="16dp"
 app:arrowOffset="30dp"
 app:arrowAlignment="right"
+app:arrowLocation="top"
 ```
 
 Screenshot:
