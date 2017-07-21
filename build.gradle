@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'com.android.tools.build:gradle:2.3.3'
     }
 }
 
@@ -16,3 +16,5 @@ allprojects {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.4'
 }
+
+
