@@ -20,7 +20,7 @@
         android:gravity="center_horizontal"
         android:text="Don't get it?"
         app:tooltipColor="#66009900"
-        app:anchoredView="@id/header_1" />
+        app:arrowLocation="3"/>
 
     <TextView
         android:id="@id/header_1"
@@ -78,7 +78,8 @@
         android:layout_below="@id/header_3"
         app:cornerRadius="40dp"
         app:tooltipColor="#999900cc"
-        app:arrowHeight="40dp" />
+        app:arrowHeight="40dp"
+        app:arrowAlignment="center"/>
 
     <com.venmo.view.TooltipView
         android:layout_width="160dp"
@@ -87,6 +88,7 @@
         android:layout_toRightOf="@id/big_bubble_1"
         android:layout_marginTop="16dp"
         app:tooltipColor="#999900cc"
-        app:arrowWidth="120dp"
-        app:arrowHeight="60dp" />
+        app:arrowWidth="10dp"
+        app:arrowHeight="10dp"
+        app:arrowLocation="1"/>
 </RelativeLayout>

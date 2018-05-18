@@ -22,14 +22,19 @@ public class TooltipView extends TextView {
     private int arrowHeight;
     private int arrowWidth;
     private int cornerRadius;
-    private @IdRes int anchoredViewId;
-    private @ColorRes int tooltipColor;
+    private
+    @IdRes
+    int anchoredViewId;
+    private
+    @ColorRes
+    int tooltipColor;
     private ArrowLocation arrowLocation;
     private ArrowAlignment arrowAlignment;
     private int alignmentOffset;
     private int arrowPositioning;
     private Paint paint;
     private Path tooltipPath;
+    public static final int LEFT = 1, TOP = 2, RIGHT = 3, BOTTOM = 4;
 
     public TooltipView(Context context) {
         super(context);
@@ -61,8 +66,20 @@ public class TooltipView extends TextView {
                     R.dimen.tooltip_default_arrow_width);
             arrowPositioning = a.getInteger(R.styleable.TooltipView_arrowLocation,
                     res.getInteger(R.integer.tooltip_default_arrow_location));
-            arrowLocation = arrowPositioning == 0 ? new TopArrowLocation()
-                    : new BottomArrowLocation();
+            switch (arrowPositioning) {
+                case LEFT:
+                    arrowLocation = new LeftArrowLocation();
+                    break;
+                case TOP:
+                    arrowLocation = new TopArrowLocation();
+                    break;
+                case RIGHT:
+                    arrowLocation = new RightArrowLocation();
+                    break;
+                case BOTTOM:
+                    arrowLocation = new BottomArrowLocation();
+                    break;
+            }
             arrowAlignment = ArrowAlignment.getAlignment(
                     a.getInteger(R.styleable.TooltipView_arrowAlignment, res.getInteger(
                             R.integer.tooltip_default_arrow_alignment)));
@@ -76,7 +93,18 @@ public class TooltipView extends TextView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        setMeasuredDimension(getMeasuredWidth(), getMeasuredHeight() + arrowHeight);
+        int widthOffset = 0, heightOffset = 0;
+        switch (arrowPositioning) {
+            case TOP:
+            case BOTTOM:
+                heightOffset = arrowHeight;
+                break;
+            case LEFT:
+            case RIGHT:
+                widthOffset = arrowHeight;
+                break;
+        }
+        setMeasuredDimension(getMeasuredWidth()+widthOffset, getMeasuredHeight() + heightOffset);
     }
 
     @Override
@@ -200,7 +228,7 @@ public class TooltipView extends TextView {
     }
 
     private int getDimension(TypedArray a, @StyleableRes int styleableId,
-            @DimenRes int defaultDimension) {
+                             @DimenRes int defaultDimension) {
         int result = a.getDimensionPixelSize(styleableId, NOT_PRESENT);
         if (result == NOT_PRESENT) {
             result = getResources().getDimensionPixelSize(defaultDimension);

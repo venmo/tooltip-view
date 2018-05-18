@@ -4,7 +4,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.view.View;
 
 import static android.graphics.Path.Direction;
 
@@ -18,7 +17,7 @@ class BottomArrowLocation implements ArrowLocation {
         view.getTooltipPath()
                 .addRoundRect(rectF, view.getCornerRadius(), view.getCornerRadius(), Direction.CW);
 
-        float middle = ArrowAlignmentHelper.calculateArrowMidPoint(view, rectF);
+        float middle = ArrowAlignmentHelper.calculateArrowMidPoint(view, rectF,true);
 
         view.getTooltipPath().moveTo(middle, view.getHeight());
         int arrowDx = view.getArrowWidth() / 2;
