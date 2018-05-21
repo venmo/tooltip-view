@@ -27,13 +27,9 @@ app:arrowAlignment="end"
 app:arrowLocation="top"
 ```
 
-Screenshot:
 ![https://raw.githubusercontent.com/venmo/tooltip-view/master/sample.png](https://raw.githubusercontent.com/venmo/tooltip-view/master/sample.png)
 
 # Download
 ```groovy
 compile 'com.venmo.view.tooltip:tooltip:0.1.2@aar'
 ```
-
-## TODO
- - tooltips on the sides of the bubble
